@@ -4,11 +4,11 @@ Based directly on [MS Docs Minimal API tutorial](https://docs.microsoft.com/en-u
 
 ## Tools used:
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download)  ***( Note: .NET 6 or later is required for minimal APIs )*** 
-- VS Code (on Macbook Pro M1)
+- [VS Code](https://code.visualstudio.com/download) (on Macbook Pro M1)
 - Dotnet CLI 
-- Postman
+- [Postman](https://www.postman.com/)
 - Entity Framework Core v6.0.7 and its [In-Memory database](https://docs.microsoft.com/en-us/ef/core/providers/in-memory/?tabs=dotnet-core-cli).
-  - NOTE: SQlite is preferred, even for testing
+  - Note: SQlite is preferred, even for testing
 
 ## Project Purpose:
 - Build the simplest implimentation of a .NET Minimal API
@@ -20,7 +20,8 @@ Based directly on [MS Docs Minimal API tutorial](https://docs.microsoft.com/en-u
 # To Run & Test
 1) Clone this repo
 2) Run in VisualStudio, **or** type "dotnet run" in a console with Dotnet CLI while navigated into the QuotesAPI directory
-3) Test using curl, HttpRepl, Postman, Insomnia, etc. I use [Postman](https://www.postman.com/)
+3) Test using curl, HttpRepl, Postman, Insomnia, etc. 
+  - I use [Postman](https://www.postman.com/)
 
 ## Screenshots
 <img width="1006" alt="Screen Shot 2022-07-24 at 3 31 16 AM" src="https://user-images.githubusercontent.com/61135183/180637081-2a3c9075-a643-4867-a1d5-942a026bb482.png">
