@@ -3,7 +3,7 @@ Simple CRUD api using .NET 6 Minimal API, with requests to create/read/update/de
 Based directly on [MS Docs Minimal API tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-6.0&tabs=visual-studio).
 
 ## Tools used:
-- [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download). ***.NET 6 or later is required for minimal APIs***
+- [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download) ***NOTE: .NET 6 or later is required for minimal APIs***
 - VS Code (on Macbook Pro M1)
 - Dotnet CLI 
 - Postman
