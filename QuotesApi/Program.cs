@@ -1,43 +1,57 @@
+using Microsoft.EntityFrameworkCore;
+using QuotesApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Add services ((optional)) to the container here before the app definition.
+builder.Services.AddDbContext<QuotesDb>(opt => opt.UseInMemoryDatabase("QuoteList"));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Add Request Mappings here:
+app.MapGet("/", () => "Welcome! This is a basic Quotes API");
+app.MapGet("/quotes/all", async (QuotesDb db) =>
+    await db.Quotes.ToListAsync());
 
-app.UseHttpsRedirection();
+app.MapGet("/quotes/{id}", async (int id, QuotesDb db) =>
+    await db.Quotes.FindAsync(id)
+        is Quote quote
+            ? Results.Ok(quote)
+            : Results.NotFound());
 
-var summaries = new[]
+app.MapPost("/quotes", async (Quote quote, QuotesDb db) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    db.Quotes.Add(quote);
+    await db.SaveChangesAsync();
 
-app.MapGet("/weatherforecast", () =>
+    return Results.Created($"/quotes/{quote.Id}", quote);
+});
+
+app.MapPut("/quotes/{id}", async (int id, Quote inputquote, QuotesDb db) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var quote = await db.Quotes.FindAsync(id);
+
+    if (quote is null) return Results.NotFound();
+
+    quote.Content = inputquote.Content;
+    quote.Source = inputquote.Source;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+app.MapDelete("/quotes/{id}", async (int id, QuotesDb db) =>
+{
+    if (await db.Quotes.FindAsync(id) is Quote quote)
+    {
+        db.Quotes.Remove(quote);
+        await db.SaveChangesAsync();
+        return Results.Ok(quote);
+    }
+
+    return Results.NotFound();
+});
 
 app.Run();
-
-record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
