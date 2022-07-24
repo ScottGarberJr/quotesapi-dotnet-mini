@@ -12,7 +12,7 @@ Based directly on [MS Docs Minimal API tutorial](https://docs.microsoft.com/en-u
 ## Project Purpose:
 - Build the simplest implimentation of a .NET Minimal API
 <img width="133" alt="Screen Shot 2022-07-24 at 3 18 30 AM" src="https://user-images.githubusercontent.com/61135183/180636733-a9e0904d-ecc1-41cd-a9da-a362adceef0e.png">
-- Use the simplest example of a [Data Transfer Object (DTO)](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)
+- Use the simplest example of a [Data Transfer Object (DTO) ](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)
 - Test HTTP requests with Postman
 <img width="190" alt="Screen Shot 2022-07-24 at 3 20 23 AM" src="https://user-images.githubusercontent.com/61135183/180636780-c90c322d-2c99-44e4-9771-8811c86774b8.png">
 
