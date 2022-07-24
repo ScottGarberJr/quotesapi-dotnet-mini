@@ -29,7 +29,7 @@ namespace QuotesApi.Models
 
         public QuoteDTO() { }
         public QuoteDTO(Quote QuoteItem) =>
-        (Id, Content, Source, SubSource) = (QuoteItem.Id, QuoteItem.Content, QuoteItem.Source, QuoteItem.Source);
+        (Id, Content, Source, SubSource) = (QuoteItem.Id, QuoteItem.Content, QuoteItem.Source, QuoteItem.SubSource);
     }
 
 }

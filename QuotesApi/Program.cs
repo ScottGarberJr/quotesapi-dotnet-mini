@@ -52,7 +52,7 @@ app.MapPut("/api/quotes/{id}", async (int id, QuoteDTO quoteDTO, QuotesDb db) =>
     await db.SaveChangesAsync();
 
     return Results.NoContent(); 
-    //this Results.NoContent() is the reason it returns a 202 response rather than the content modified like in POST ??
+    //this Results.NoContent() is the reason it returns a 204 response rather than the content modified like in POST ??
 });
 
 app.MapDelete("/api/quotes/{id}", async (int id, QuotesDb db) =>                                                // Delete a quote by Id //
